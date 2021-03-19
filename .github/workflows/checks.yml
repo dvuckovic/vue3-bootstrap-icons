@@ -1,0 +1,36 @@
+name: Test
+
+# Controls when the action will run.
+#   Triggers the workflow on all pushes & pull requests.
+on: [push, pull_request]
+
+jobs:
+  github_ci:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout 🛎️
+      uses: actions/checkout@v2
+
+    - name: Cache 💾
+      uses: actions/cache@v2
+      env:
+          cache-name: cache-npm
+      with:
+          path: |
+            ~/.npm
+            ~/.cache
+            **/node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+    - name: Install 📦
+      run: npm install --no-save
+
+    - name: Test ✅
+      run: npm test
+
+    - name: Build 🚛
+      run: npm run build
