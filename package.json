@@ -55,11 +55,11 @@
     "rollup-plugin-vue": "^6.0.0",
     "sass": "^1.32.8",
     "sass-loader": "^10.1.1",
-    "vue": "^3.0.5",
+    "vue": "^3.0.7",
     "vue-jest": "^5.0.0-0"
   },
   "peerDependencies": {
-    "vue": "^3.0.5"
+    "vue": "^3.0.7"
   },
   "engines": {
     "node": ">=12"
@@ -75,5 +75,6 @@
     "type": "git",
     "url": "git+https://github.com/dvuckovic/vue3-bootstrap-icons.git"
   },
+  "homepage": "https://dvuckovic.com/2021/03/12/vue-bootstrap-icons/",
   "sideEffects": false
 }
