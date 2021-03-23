@@ -39,7 +39,7 @@ export default /* #__PURE__ */defineComponent({
 
         size: {
             type: String,
-            validator: value => [
+            validator: (value) => [
                 'sm',
                 'md',
                 'lg',
@@ -60,12 +60,12 @@ export default /* #__PURE__ */defineComponent({
 
         rotate: {
             type: [ String, Number ],
-            validator: value => value >= -360 && value <= 360,
+            validator: (value) => value >= -360 && value <= 360,
         },
 
         animation: {
             type: String,
-            validator: value => [
+            validator: (value) => [
                 'cylon',
                 'cylon-vertical',
                 'fade',
