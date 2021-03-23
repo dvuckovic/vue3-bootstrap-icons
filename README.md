@@ -62,13 +62,16 @@ For SSR environment, make sure to import from the following path:
 import BootstrapIconSsr from '@dvuckovic/vue3-bootstrap-icons/dist/bootstrap-icon.ssr';
 ```
 
-### UMD
+### IIFE
 
-You can also include the UMD-flavor build in an existing page via:
+An IIFE-flavor build for including the component in existing pages is also provided, but you must make sure that the path to [the Bootstrap Icons SVG sprite](https://icons.getbootstrap.com/#sprite) is declared first via the expected `BootstrapIcons` global variable:
 
-```html
+ ```html
+<script>var BootstrapIcons = '/path/to/bootstrap-icons.svg';</script>
 <script src="//unpkg.com/@dvuckovic/vue3-bootstrap-icons/dist/bootstrap-icon.min.js"></script>
 ```
+
+> Note that the SVG sprite asset must be available via the same server where the page is hosted, in order for the inlining to work in all browsers (a security limitation).
 
 ## Props
 

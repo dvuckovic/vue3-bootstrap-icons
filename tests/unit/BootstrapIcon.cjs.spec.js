@@ -1,8 +1,8 @@
 import { shallowMount } from '@vue/test-utils';
-import BootstrapIcon from '@/BootstrapIcon';
+import BootstrapIcon from '../../dist/bootstrap-icon.ssr';
 import fileMock from './mocks/fileMock';
 
-describe('BootstrapIcon', () => {
+describe('BootstrapIcon (CJS)', () => {
     let wrapper;
 
     it('mounts successfully', () => {
@@ -36,7 +36,7 @@ describe('BootstrapIcon', () => {
 
         await wrapper.vm.$nextTick(() => {});
 
-        expect(wrapper.find('.bi').classes()).toContain('bi--variant-danger');
+        expect(wrapper.find('.bi').classes()).toContain(`bi--variant-${variant}`);
     });
 
     it('supports the size prop', async () => {
@@ -48,7 +48,7 @@ describe('BootstrapIcon', () => {
 
         await wrapper.vm.$nextTick(() => {});
 
-        expect(wrapper.find('.bi').classes()).toContain('bi--size-md');
+        expect(wrapper.find('.bi').classes()).toContain(`bi--size-${size}`);
     });
 
     it('supports the flip props', async () => {
@@ -82,7 +82,7 @@ describe('BootstrapIcon', () => {
         const rotate = 90;
 
         wrapper.setProps({
-            rotate: '90',
+            rotate,
         });
 
         await wrapper.vm.$nextTick(() => {});
@@ -91,12 +91,14 @@ describe('BootstrapIcon', () => {
     });
 
     it('supports the animation prop', async () => {
+        const animation = 'spin';
+
         wrapper.setProps({
-            animation: 'spin',
+            animation,
         });
 
         await wrapper.vm.$nextTick(() => {});
 
-        expect(wrapper.find('.bi').classes()).toContain('bi--animation-spin');
+        expect(wrapper.find('.bi').classes()).toContain(`bi--animation-${animation}`);
     });
 });
