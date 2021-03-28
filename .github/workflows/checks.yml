@@ -1,8 +1,14 @@
 name: Test
 
 # Controls when the action will run.
-#   Triggers the workflow on all pushes & pull requests.
-on: [push, pull_request]
+#   Triggers the workflow on all pushes & pull requests, except on tag creation.
+on:
+  push:
+    branches:
+    - '**'
+    tags-ignore:
+    - '**'
+  pull_request:
 
 jobs:
   github_ci:
