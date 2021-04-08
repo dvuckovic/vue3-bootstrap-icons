@@ -28,7 +28,7 @@
     "src/**/*.vue"
   ],
   "dependencies": {
-    "bootstrap-icons": "^1.4.0"
+    "bootstrap-icons": "^1.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
