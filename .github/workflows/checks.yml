@@ -1,14 +1,13 @@
-name: Test
+name: checks
 
 # Controls when the action will run.
-#   Triggers the workflow on all pushes & pull requests, except on tag creation.
+#   Triggers the workflow on all pushes, except on tag creation.
 on:
   push:
     branches:
     - '**'
     tags-ignore:
     - '**'
-  pull_request:
 
 jobs:
   github_ci:
@@ -27,10 +26,6 @@ jobs:
             ~/.cache
             **/node_modules
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
 
     - name: Install 📦
       run: npm install --no-save
