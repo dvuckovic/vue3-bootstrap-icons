@@ -65,7 +65,7 @@
     "rollup-plugin-vue": "^6.0.0",
     "sass": "^1.32.8",
     "sass-loader": "^10.1.1",
-    "serve": "^13.0.2",
+    "serve": "^14.1.2",
     "start-server-and-test": "^1.12.1",
     "vue": "^3.2.31",
     "vue-jest": "^5.0.0-0"
