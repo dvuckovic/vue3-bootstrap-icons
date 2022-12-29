@@ -1,6 +1,7 @@
 // rollup.config.js
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import vue from 'rollup-plugin-vue';
 import alias from '@rollup/plugin-alias';
 import commonjs from '@rollup/plugin-commonjs';
@@ -19,6 +20,9 @@ const esbrowserslist = fs.readFileSync('./.browserslistrc')
     .filter((entry) => entry && entry.substring(0, 2) !== 'ie');
 
 const argv = minimist(process.argv.slice(2));
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const projectRoot = path.resolve(__dirname, '..');
 
