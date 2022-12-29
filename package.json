@@ -4,7 +4,7 @@
   "description": "A Vue.js component for rendering Bootstrap Icons via the SVG sprite method.",
   "author": "Dusan Vuckovic <dusan@dvuckovic.com> (https://dvuckovic.com)",
   "scripts": {
-    "serve": "vue-cli-service serve dev/serve.js",
+    "serve": "cross-env NODE_OPTIONS=--openssl-legacy-provider vue-cli-service serve dev/serve.js",
     "build": "cross-env NODE_ENV=production rollup --config build/rollup.config.js",
     "lint": "vue-cli-service lint",
     "build:es": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format es",
