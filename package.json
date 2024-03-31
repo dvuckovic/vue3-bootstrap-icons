@@ -1,82 +1,17 @@
 {
   "name": "@dvuckovic/vue3-bootstrap-icons",
-  "version": "1.0.6",
+  "version": "2.0.0",
   "description": "A Vue.js component for rendering Bootstrap Icons via the SVG sprite method.",
   "author": "Dusan Vuckovic <dusan@dvuckovic.com> (https://dvuckovic.com)",
   "scripts": {
-    "serve": "cross-env NODE_OPTIONS=--openssl-legacy-provider vue-cli-service serve dev/serve.js",
-    "build": "cross-env NODE_ENV=production rollup --config build/rollup.config.mjs",
-    "lint": "vue-cli-service lint",
-    "build:es": "cross-env NODE_ENV=production rollup --config build/rollup.config.mjs --format es",
-    "build:ssr": "cross-env NODE_ENV=production rollup --config build/rollup.config.mjs --format cjs",
-    "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.mjs --format iife",
-    "start": "serve --listen 8080 .",
-    "test:all": "npm run test:unit && npm run test:e2e",
-    "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "start-server-and-test start 8080 test:e2e:cypress",
-    "test:e2e:cypress": "vue-cli-service test:e2e --url http://localhost:8080/iife --headless --quiet",
-    "test:e2e:cypress:debug": "vue-cli-service test:e2e --url http://localhost:8080/iife",
-    "pretest": "npm run lint",
-    "test": "npm run build && npm run test:all",
-    "release": "standard-version --sign"
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
   },
-  "main": "dist/bootstrap-icon.ssr.js",
-  "module": "dist/bootstrap-icon.esm.js",
-  "browser": "dist/bootstrap-icon.esm.js",
-  "unpkg": "dist/bootstrap-icon.min.js",
-  "files": [
-    "dist/*",
-    "src/**/*.vue"
-  ],
-  "dependencies": {
-    "bootstrap-icons": "^1.4.1"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/preset-env": "^7.12.11",
-    "@popperjs/core": "^2.9.1",
-    "@rollup/plugin-alias": "^4.0.2",
-    "@rollup/plugin-babel": "^6.0.3",
-    "@rollup/plugin-commonjs": "^24.0.0",
-    "@rollup/plugin-image": "^3.0.1",
-    "@rollup/plugin-node-resolve": "^15.0.1",
-    "@rollup/plugin-replace": "^5.0.2",
-    "@vue/cli-plugin-babel": "^5.0.8",
-    "@vue/cli-plugin-e2e-cypress": "~5.0.8",
-    "@vue/cli-plugin-eslint": "^5.0.8",
-    "@vue/cli-plugin-unit-jest": "^4.5.12",
-    "@vue/cli-service": "^5.0.8",
-    "@vue/compiler-sfc": "^3.0.5",
-    "@vue/eslint-config-airbnb": "^5.0.2",
-    "@vue/test-utils": "^2.0.0-0",
-    "babel-eslint": "^10.1.0",
-    "bootstrap": "^5.0.0-beta2",
-    "cross-env": "^7.0.3",
-    "cypress": "^9.5.1",
-    "eslint": "^7.32.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-chai-friendly": "^0.7.2",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-vue": "^9.8.0",
-    "minimist": "^1.2.5",
-    "postcss": "^8.2.3",
-    "rollup": "^3.9.0",
-    "rollup-plugin-postcss": "^4.0.0",
-    "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-vue": "^6.0.0",
-    "sass": "^1.32.8",
-    "sass-loader": "^10.1.1",
-    "serve": "^14.1.2",
-    "standard-version": "^9.5.0",
-    "start-server-and-test": "^1.12.1",
-    "vue": "^3.2.31",
-    "vue-jest": "^5.0.0-0"
-  },
-  "peerDependencies": {
-    "vue": "^3.0.9"
-  },
-  "engines": {
-    "node": ">=12"
+  "license": "WTFPL",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dvuckovic/vue3-bootstrap-icons.git"
   },
   "homepage": "https://dvuckovic.com/2021/03/12/vue-bootstrap-icons/",
   "keywords": [
@@ -85,57 +20,41 @@
     "bootstrap",
     "icons"
   ],
-  "license": "WTFPL",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dvuckovic/vue3-bootstrap-icons.git"
+  "files": [
+    "dist/*"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./utils": {
+      "import": "./dist/utils.js",
+      "require": "./dist/utils.cjs"
+    },
+    "./dist/style.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
+    }
   },
-  "sideEffects": false,
-  "standard-version": {
-    "types": [
-      {
-        "type": "feat",
-        "section": "Added"
-      },
-      {
-        "type": "fix",
-        "section": "Fixed"
-      },
-      {
-        "type": "build",
-        "section": "Changed"
-      },
-      {
-        "type": "ci",
-        "section": "Changed"
-      },
-      {
-        "type": "chore",
-        "section": "Changed"
-      },
-      {
-        "type": "docs",
-        "section": "Documented"
-      },
-      {
-        "type": "style",
-        "section": "Changed"
-      },
-      {
-        "type": "refactor",
-        "section": "Changed"
-      },
-      {
-        "type": "perf",
-        "section": "Fixed"
-      },
-      {
-        "type": "test",
-        "section": "Changed"
-      }
-    ]
+  "types": "./dist/entry/*.d.ts",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
+    "vue": "^3.4.15"
   },
-  "resolutions": {
-    "@achrinza/node-ipc": "10.1.7"
+  "devDependencies": {
+    "@team-griffin/install-self-peers": "^1.1.1",
+    "@types/lodash-es": "^4.17.12",
+    "@vitejs/plugin-vue": "^5.0.3",
+    "lodash-es": "^4.17.21",
+    "path": "^0.12.7",
+    "postcss": "^8.2.14",
+    "postcss-nested": "^6.0.1",
+    "sass": "^1.70.0",
+    "typescript": "^5.2.2",
+    "vite": "^5.1.0",
+    "vite-plugin-dts": "^3.7.2",
+    "vue-tsc": "^1.8.27"
   }
 }
