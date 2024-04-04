@@ -39,7 +39,10 @@ export default defineConfig((_) => ({
       formats: ['es', 'cjs'],
     },
     rollupOptions: {
-      external: ['vue', 'bootstrap-icons/bootstrap-icons.svg'],
+      external: [
+        'bootstrap-icons/bootstrap-icons.svg',
+        'vue',
+      ],
       output: {
         globals: {
           vue: 'Vue',
