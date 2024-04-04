@@ -28,7 +28,7 @@ const bootstrapIcons = () => {
   }
 }
 
-export default defineConfig({
+export default defineConfig((_) => ({
   plugins: [vue(), dts(), bootstrapIcons()],
   build: {
     lib: {
@@ -52,4 +52,16 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src'),
     },
   },
-})
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    coverage: {
+      exclude: [
+        'postcss.config.js',
+        'src/App.vue',
+        'src/main.ts',
+        'src/types.ts',
+      ],
+    },
+  },
+}))

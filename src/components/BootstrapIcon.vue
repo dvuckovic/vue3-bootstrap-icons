@@ -1,11 +1,14 @@
 <template>
   <svg
+    xmlns="http://www.w3.org/2000/svg"
     class="bi"
-    v-bind:class="cssClasses">
+    :class="cssClasses"
+    role="graphics-document">
     <g
-      v-bind:transform="svgTransform"
-      transform-origin="center">
-      <use v-bind:xlink:href="`${svgSprite}#${icon}`" />
+      :transform="svgTransform"
+      transform-origin="center"
+    >
+      <use :xlink:href="`${svgSprite}#${icon}`" />
     </g>
   </svg>
 </template>
