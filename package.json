@@ -38,7 +38,7 @@
       "require": "./dist/style.css"
     }
   },
-  "types": "./dist/entry/*.d.ts",
+  "types": "./dist/*.d.ts",
   "dependencies": {
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",

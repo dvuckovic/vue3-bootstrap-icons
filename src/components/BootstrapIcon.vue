@@ -1,21 +1,5 @@
-<template>
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    class="bi"
-    :class="cssClasses"
-    role="graphics-document">
-    <g
-      :transform="svgTransform"
-      transform-origin="center"
-    >
-      <use :xlink:href="`${svgSprite}#${icon}`" />
-    </g>
-  </svg>
-</template>
-
 <script setup lang="ts">
 import { computed } from 'vue'
-import BootstrapIcons from 'bootstrap-icons/bootstrap-icons.svg'
 import type { BootstrapIconAnimation, BootstrapIconSize, BootstrapIconVariant } from '../types.ts'
 
 const props = defineProps<{
@@ -26,7 +10,6 @@ const props = defineProps<{
   flipV?: boolean
   rotate?: String | Number
   animation?: BootstrapIconAnimation
-  useInjectedSprites?: boolean
 }>()
 
 const cssClasses = computed(() => {
@@ -60,9 +43,22 @@ const svgTransform = computed(() => {
   return (scale ? `scale(${scale})` : '')
     + (rotate ? `rotate(${rotate})` : '')
 })
-
-const svgSprite = computed(() => props.useInjectedSprites ? '' : BootstrapIcons)
 </script>
+
+<template>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="bi"
+    :class="cssClasses"
+    role="graphics-document">
+    <g
+      :transform="svgTransform"
+      transform-origin="center"
+    >
+      <use :xlink:href="`#${icon}`" />
+    </g>
+  </svg>
+</template>
 
 <style lang="postcss" scoped>
 .bi {

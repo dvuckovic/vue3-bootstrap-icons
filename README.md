@@ -7,27 +7,12 @@ A Vue.js component for rendering [Bootstrap Icons](https://icons.getbootstrap.co
 ## Install
 
 ```sh
-yarn add @dvuckovic/vue3-bootstrap-icons
+yarn add @dvuckovic/vue3-bootstrap-icons bootstrap-icons
 ```
 
 ## Usage
 
-Global component registration:
-
-```ts
-import { createApp } from 'vue'
-import App from './App.vue'
-import { BootstrapIcon } from '@dvuckovic/vue3-bootstrap-icons'
-import '@dvuckovic/vue3-bootstrap-icons/dist/style.css'
-
-const app = createApp(App)
-
-app.component('BootstrapIcon', BootstrapIcon)
-
-app.mount('#app')
-```
-
-With manually injected sprites:
+Global component registration and injecting sprites:
 
 ```ts
 import { createApp } from 'vue'
@@ -40,8 +25,6 @@ import '@dvuckovic/vue3-bootstrap-icons/dist/style.css'
 injectBootstrapIcons(BootstrapIcons)
 
 const app = createApp(App)
-
-BootstrapIcon.props.useInjectedSprites.default = true
 
 app.component('BootstrapIcon', BootstrapIcon)
 
