@@ -29,7 +29,17 @@ const bootstrapIcons = () => {
 }
 
 export default defineConfig((_) => ({
-  plugins: [vue(), dts(), bootstrapIcons()],
+  plugins: [
+    vue(),
+    dts({
+      exclude: [
+        'src/main.ts',
+        'src/types.ts',
+        'src/**/__tests__/',
+      ],
+    }),
+    bootstrapIcons(),
+  ],
   build: {
     lib: {
       entry: {
