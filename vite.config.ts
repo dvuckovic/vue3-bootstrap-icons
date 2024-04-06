@@ -33,13 +33,14 @@ export default defineConfig((_) => ({
   build: {
     lib: {
       entry: {
-        index: path.resolve(__dirname, 'src/entry/index.ts'),
-        utils: path.resolve(__dirname, 'src/entry/utils.ts'),
+        index: path.resolve(__dirname, 'src/index.ts'),
+        utils: path.resolve(__dirname, 'src/utils.ts'),
       },
       formats: ['es', 'cjs'],
     },
     rollupOptions: {
       external: [
+        'bootstrap',
         'bootstrap-icons/bootstrap-icons.svg',
         'vue',
       ],

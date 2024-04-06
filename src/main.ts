@@ -9,8 +9,6 @@ injectBootstrapIcons(BootstrapIcons)
 
 const app = createApp(App)
 
-BootstrapIcon.props.useInjectedSprites.default = true
-
 app.component('BootstrapIcon', BootstrapIcon)
 
 app.mount('#app')

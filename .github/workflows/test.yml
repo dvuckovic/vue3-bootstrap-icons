@@ -37,5 +37,5 @@ jobs:
     - name: Upload ⬆️
       uses: actions/upload-artifact@v4
       with:
-        name: vue3-bootstrap-icons
+        name: ${{ github.repository }}
         path: '*.tgz'

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { BootstrapIcon } from '../entry/index.ts'
-import { injectBootstrapIcons } from '../entry/utils.ts'
+import { BootstrapIcon } from '../index.ts'
+import { injectBootstrapIcons } from '../utils.ts'
 
 describe('index entrypoint', () => {
   it('exports vue component', () => {

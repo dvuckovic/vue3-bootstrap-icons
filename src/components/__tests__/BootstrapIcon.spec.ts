@@ -20,7 +20,7 @@ describe('BootstrapIcon', () => {
 
     const use = group.children[0]
 
-    expect(use.attributes.getNamedItem('xlink:href')?.value).toEqual('/node_modules/bootstrap-icons/bootstrap-icons.svg#exclamation-circle-fill')
+    expect(use.attributes.getNamedItem('xlink:href')?.value).toEqual('#exclamation-circle-fill')
   })
 
   it('logs warning if icon prop is omitted', () => {
@@ -109,20 +109,5 @@ describe('BootstrapIcon', () => {
     const svg = view.getByRole('graphics-document')
 
     expect(svg.classList.contains('bi--animation-spin')).toBe(true)
-  })
-
-  it('supports injected sprites', () => {
-    const view = render(BootstrapIcon, {
-      props: {
-        icon: 'exclamation-circle-fill',
-        useInjectedSprites: true,
-      },
-    })
-
-    const svg = view.getByRole('graphics-document')
-    const group = svg.children[0]
-    const use = group.children[0]
-
-    expect(use.attributes.getNamedItem('xlink:href')?.value).toEqual('#exclamation-circle-fill')
   })
 })
