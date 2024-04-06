@@ -5,7 +5,7 @@
   "author": "Dusan Vuckovic <dusan@dvuckovic.com> (https://dvuckovic.com)",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build && rm -r dist/__tests__/ dist/**/__tests__/ dist/main.d.ts dist/types.d.ts",
+    "build": "vue-tsc && vite build",
     "test": "vitest",
     "coverage": "vitest run --coverage"
   },
