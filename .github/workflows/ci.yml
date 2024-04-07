@@ -51,18 +51,8 @@ jobs:
     - name: Build ⚙️
       run: yarn build
 
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
-
-    - name: Dump job context
-      env:
-        JOB_CONTEXT: ${{ toJson(job) }}
-      run: echo "$JOB_CONTEXT"
-
     - name: Publish 📜
-      if: github.event.type == 'release' && github.event.action == 'published'
+      if: github.event_name == 'release' && github.event.action == 'published'
       run: yarn publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
