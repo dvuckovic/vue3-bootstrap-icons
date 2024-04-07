@@ -2,7 +2,7 @@
 
 A Vue.js component for rendering [Bootstrap Icons](https://icons.getbootstrap.com/) via the SVG sprite method.
 
-[Demo] [Changelog]
+[Demo]
 
 ## Install
 
@@ -139,11 +139,4 @@ yarn dev
 yarn build
 ```
 
-### Preview (Demo)
-
-```sh
-yarn preview
-```
-
 [Demo]: https://dvuckovic.com/2021/03/12/vue-bootstrap-icons/
-[Changelog]: ./CHANGELOG.md
