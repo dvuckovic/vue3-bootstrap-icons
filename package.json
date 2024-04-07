@@ -5,6 +5,8 @@
   "author": "Dusan Vuckovic <dusan@dvuckovic.com> (https://dvuckovic.com)",
   "scripts": {
     "dev": "vite",
+    "lint": "prettier . --check",
+    "lint:fix": "prettier . --write",
     "build": "vue-tsc && vite build",
     "test": "vitest",
     "coverage": "vitest run --coverage"
@@ -56,6 +58,7 @@
     "path": "^0.12.7",
     "postcss": "^8.2.14",
     "postcss-nested": "^6.0.1",
+    "prettier": "3.2.5",
     "sass": "^1.70.0",
     "typescript": "^5.2.2",
     "vite": "^5.1.0",

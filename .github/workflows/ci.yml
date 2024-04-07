@@ -7,61 +7,64 @@ name: ci
 on:
   push:
     branches:
-    - '**'
+      - '**'
   release:
     types:
-    - published
+      - published
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout 🛎️
-      uses: actions/checkout@v4
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
 
-    - name: Setup 🔧
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-        cache: yarn
+      - name: Setup 🔧
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: yarn
 
-    - name: Install 📦
-      run: yarn install
+      - name: Install 📦
+        run: yarn install
 
-    - name: Test ✅
-      run: yarn coverage
+      - name: Format 🔎
+        run: yarn lint
+
+      - name: Test ✅
+        run: yarn coverage
 
   build:
     runs-on: ubuntu-latest
     needs: test
     steps:
-    - name: Checkout 🛎️
-      uses: actions/checkout@v4
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
 
-    - name: Setup 🔧
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-        cache: yarn
-        registry-url: https://registry.npmjs.org
+      - name: Setup 🔧
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: yarn
+          registry-url: https://registry.npmjs.org
 
-    - name: Install 📦
-      run: yarn install --frozen-lockfile
+      - name: Install 📦
+        run: yarn install --frozen-lockfile
 
-    - name: Build ⚙️
-      run: yarn build
+      - name: Build ⚙️
+        run: yarn build
 
-    - name: Publish 📜
-      if: github.event_name == 'release' && github.event.action == 'published'
-      run: yarn publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish 📜
+        if: github.event_name == 'release' && github.event.action == 'published'
+        run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-    - name: Pack 🎁
-      run: yarn pack
+      - name: Pack 🎁
+        run: yarn pack
 
-    - name: Upload ⬆️
-      uses: actions/upload-artifact@v4
-      with:
-        name: ${{ github.event.repository.name }}
-        path: '*.tgz'
+      - name: Upload ⬆️
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.event.repository.name }}
+          path: '*.tgz'

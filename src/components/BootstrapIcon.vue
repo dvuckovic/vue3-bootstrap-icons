@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { BootstrapIconAnimation, BootstrapIconSize, BootstrapIconVariant } from '../types.ts'
+import type {
+  BootstrapIconAnimation,
+  BootstrapIconSize,
+  BootstrapIconVariant,
+} from '../types.ts'
 
 const props = defineProps<{
-  icon: string;
+  icon: string
   variant?: BootstrapIconVariant
   size?: BootstrapIconSize
   flipH?: boolean
@@ -40,8 +44,7 @@ const svgTransform = computed(() => {
     rotate = props.rotate
   }
 
-  return (scale ? `scale(${scale})` : '')
-    + (rotate ? `rotate(${rotate})` : '')
+  return (scale ? `scale(${scale})` : '') + (rotate ? `rotate(${rotate})` : '')
 })
 </script>
 
@@ -50,11 +53,9 @@ const svgTransform = computed(() => {
     xmlns="http://www.w3.org/2000/svg"
     class="bi"
     :class="cssClasses"
-    role="graphics-document">
-    <g
-      :transform="svgTransform"
-      transform-origin="center"
-    >
+    role="graphics-document"
+  >
+    <g :transform="svgTransform" transform-origin="center">
       <use :xlink:href="`#${icon}`" />
     </g>
   </svg>
@@ -135,15 +136,16 @@ const svgTransform = computed(() => {
 
   &--animation {
     &-cylon {
-      animation: bi-animation-cylon .75s ease-in-out infinite alternate;
+      animation: bi-animation-cylon 0.75s ease-in-out infinite alternate;
     }
 
     &-cylon-vertical {
-      animation: bi-animation-cylon-vertical .75s ease-in-out infinite alternate;
+      animation: bi-animation-cylon-vertical 0.75s ease-in-out infinite
+        alternate;
     }
 
     &-fade {
-      animation: bi-animation-fade .75s ease-in-out infinite alternate;
+      animation: bi-animation-fade 0.75s ease-in-out infinite alternate;
     }
 
     &-spin {
@@ -163,7 +165,7 @@ const svgTransform = computed(() => {
     }
 
     &-throb {
-      animation: bi-animation-throb .75s ease-in-out infinite alternate;
+      animation: bi-animation-throb 0.75s ease-in-out infinite alternate;
     }
   }
 }

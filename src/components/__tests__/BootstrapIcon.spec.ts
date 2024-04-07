@@ -16,11 +16,15 @@ describe('BootstrapIcon', () => {
 
     const group = svg.children[0]
 
-    expect(group.attributes.getNamedItem('transform-origin')?.value).toEqual('center')
+    expect(group.attributes.getNamedItem('transform-origin')?.value).toEqual(
+      'center',
+    )
 
     const use = group.children[0]
 
-    expect(use.attributes.getNamedItem('xlink:href')?.value).toEqual('#exclamation-circle-fill')
+    expect(use.attributes.getNamedItem('xlink:href')?.value).toEqual(
+      '#exclamation-circle-fill',
+    )
   })
 
   it('logs warning if icon prop is omitted', () => {
@@ -68,20 +72,26 @@ describe('BootstrapIcon', () => {
     let svg = view.getByRole('graphics-document')
     let group = svg.children[0]
 
-    expect(group.attributes.getNamedItem('transform')?.value).toEqual('scale(-1 1)')
+    expect(group.attributes.getNamedItem('transform')?.value).toEqual(
+      'scale(-1 1)',
+    )
 
     await view.rerender({
       flipV: true,
     })
 
-    expect(group.attributes.getNamedItem('transform')?.value).toEqual('scale(-1 -1)')
+    expect(group.attributes.getNamedItem('transform')?.value).toEqual(
+      'scale(-1 -1)',
+    )
 
     await view.rerender({
       flipH: false,
       flipV: true,
     })
 
-    expect(group.attributes.getNamedItem('transform')?.value).toEqual('scale(1 -1)')
+    expect(group.attributes.getNamedItem('transform')?.value).toEqual(
+      'scale(1 -1)',
+    )
   })
 
   it('supports rotation', () => {
@@ -95,7 +105,9 @@ describe('BootstrapIcon', () => {
     const svg = view.getByRole('graphics-document')
     const group = svg.children[0]
 
-    expect(group.attributes.getNamedItem('transform')?.value).toEqual('rotate(90)')
+    expect(group.attributes.getNamedItem('transform')?.value).toEqual(
+      'rotate(90)',
+    )
   })
 
   it('supports animation', () => {

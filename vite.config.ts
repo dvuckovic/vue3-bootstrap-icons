@@ -9,9 +9,12 @@ const bootstrapIcons = () => {
   const resolvedVirtualModuleId = '\0' + virtualModuleId
   const icons: string[] = []
 
-  fs.readdir(path.resolve(__dirname, 'node_modules/bootstrap-icons/icons'), (err, files) => {
-    icons.push(...(files || []).map((file) => path.basename(file, '.svg')))
-  })
+  fs.readdir(
+    path.resolve(__dirname, 'node_modules/bootstrap-icons/icons'),
+    (err, files) => {
+      icons.push(...(files || []).map((file) => path.basename(file, '.svg')))
+    },
+  )
 
   return {
     name: 'bootstrap-icons/icons', // required, will show up in warnings and errors
@@ -32,11 +35,7 @@ export default defineConfig((_) => ({
   plugins: [
     vue(),
     dts({
-      exclude: [
-        'src/main.ts',
-        'src/types.ts',
-        'src/**/__tests__/',
-      ],
+      exclude: ['src/main.ts', 'src/types.ts', 'src/**/__tests__/'],
     }),
     bootstrapIcons(),
   ],
@@ -49,11 +48,7 @@ export default defineConfig((_) => ({
       formats: ['es', 'cjs'],
     },
     rollupOptions: {
-      external: [
-        'bootstrap',
-        'bootstrap-icons/bootstrap-icons.svg',
-        'vue',
-      ],
+      external: ['bootstrap', 'bootstrap-icons/bootstrap-icons.svg', 'vue'],
       output: {
         globals: {
           vue: 'Vue',

@@ -7,17 +7,16 @@ import { sizes, variants } from './types.ts'
 const filter = ref('')
 
 const filteredIcons = computed(() => {
-  const filterRegex = new RegExp(
-    escapeRegExp(filter.value.trim()),
-    'i',
-  )
+  const filterRegex = new RegExp(escapeRegExp(filter.value.trim()), 'i')
 
   return icons.filter((icon: string) => filterRegex.exec(icon))
 })
 </script>
 
 <template>
-  <header class="bg-dark py-3 d-flex align-items-stretch border-bottom border-dark">
+  <header
+    class="bg-dark py-3 d-flex align-items-stretch border-bottom border-dark"
+  >
     <div class="container-fluid d-flex align-items-center">
       <h1 class="d-flex align-items-center fs-4 text-white mb-0">
         vue3-bootstrap-icons
@@ -65,16 +64,17 @@ const filteredIcons = computed(() => {
       <a name="icon" />
       <code>icon</code>
     </h3>
-    <input v-model="filter" class="mb-3 form-control" placeholder="Start typing to filter...">
-    <ul class="row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 list-unstyled list">
-      <li
-        v-for="icon in filteredIcons"
-        :key="icon"
-        class="col mb-4">
+    <input
+      v-model="filter"
+      class="mb-3 form-control"
+      placeholder="Start typing to filter..."
+    />
+    <ul
+      class="row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 list-unstyled list"
+    >
+      <li v-for="icon in filteredIcons" :key="icon" class="col mb-4">
         <div class="p-3 py-4 mb-2 bg-light text-center rounded">
-          <BootstrapIcon
-            :icon="icon"
-            size="2x" />
+          <BootstrapIcon :icon="icon" size="2x" />
         </div>
         <div class="name text-muted text-decoration-none text-center pt-1">
           {{ icon }}
@@ -85,21 +85,22 @@ const filteredIcons = computed(() => {
       <a name="variant" />
       <code>variant</code>
     </h3>
-    <ul class="row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 list-unstyled list">
-      <li
-        v-for="variant in variants"
-        :key="variant"
-        class="col mb-4">
+    <ul
+      class="row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 list-unstyled list"
+    >
+      <li v-for="variant in variants" :key="variant" class="col mb-4">
         <div
           class="p-3 py-4 mb-2 text-center rounded"
           :class="{
             'bg-light': variant !== 'light',
             'bg-secondary': variant === 'light',
-          }">
+          }"
+        >
           <BootstrapIcon
             :variant="variant"
             size="2x"
-            icon="exclamation-circle-fill" />
+            icon="exclamation-circle-fill"
+          />
         </div>
         <div class="name text-muted text-decoration-none text-center pt-1">
           {{ variant }}
@@ -110,15 +111,12 @@ const filteredIcons = computed(() => {
       <a name="size" />
       <code>size</code>
     </h3>
-    <ul class="row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 list-unstyled list">
-      <li
-        v-for="size in sizes.slice().reverse()"
-        :key="size"
-        class="col mb-4">
+    <ul
+      class="row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 list-unstyled list"
+    >
+      <li v-for="size in sizes.slice().reverse()" :key="size" class="col mb-4">
         <div class="p-3 py-4 mb-2 bg-light text-center rounded">
-          <BootstrapIcon
-            :size="size"
-            icon="exclamation-circle-fill" />
+          <BootstrapIcon :size="size" icon="exclamation-circle-fill" />
         </div>
         <div class="name text-muted text-decoration-none text-center pt-1">
           {{ size }}
@@ -129,13 +127,12 @@ const filteredIcons = computed(() => {
       <a name="flip" />
       <code>flip-#</code>
     </h3>
-    <ul class="row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 list-unstyled list">
+    <ul
+      class="row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 list-unstyled list"
+    >
       <li class="col mb-4">
         <div class="p-3 py-4 mb-2 bg-light text-center rounded">
-          <BootstrapIcon
-            icon="bar-chart-fill"
-            size="2x"
-            flip-h />
+          <BootstrapIcon icon="bar-chart-fill" size="2x" flip-h />
         </div>
         <div class="name text-muted text-decoration-none text-center pt-1">
           flip-h
@@ -143,10 +140,7 @@ const filteredIcons = computed(() => {
       </li>
       <li class="col mb-4">
         <div class="p-3 py-4 mb-2 bg-light text-center rounded">
-          <BootstrapIcon
-            icon="bar-chart-fill"
-            size="2x"
-            flip-v />
+          <BootstrapIcon icon="bar-chart-fill" size="2x" flip-v />
         </div>
         <div class="name text-muted text-decoration-none text-center pt-1">
           flip-v
@@ -154,11 +148,7 @@ const filteredIcons = computed(() => {
       </li>
       <li class="col mb-4">
         <div class="p-3 py-4 mb-2 bg-light text-center rounded">
-          <BootstrapIcon
-            icon="bar-chart-fill"
-            size="2x"
-            flip-h
-            flip-v />
+          <BootstrapIcon icon="bar-chart-fill" size="2x" flip-h flip-v />
         </div>
         <div class="name text-muted text-decoration-none text-center pt-1">
           flip-h + flip-v
@@ -169,13 +159,12 @@ const filteredIcons = computed(() => {
       <a name="rotate" />
       <code>rotate</code>
     </h3>
-    <ul class="row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 list-unstyled list">
+    <ul
+      class="row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 list-unstyled list"
+    >
       <li class="col mb-4">
         <div class="p-3 py-4 mb-2 bg-light text-center rounded">
-          <BootstrapIcon
-            icon="camera"
-            size="2x"
-            rotate="90" />
+          <BootstrapIcon icon="camera" size="2x" rotate="90" />
         </div>
         <div class="name text-muted text-decoration-none text-center pt-1">
           90
@@ -183,10 +172,7 @@ const filteredIcons = computed(() => {
       </li>
       <li class="col mb-4">
         <div class="p-3 py-4 mb-2 bg-light text-center rounded">
-          <BootstrapIcon
-            icon="camera"
-            size="2x"
-            rotate="-90" />
+          <BootstrapIcon icon="camera" size="2x" rotate="-90" />
         </div>
         <div class="name text-muted text-decoration-none text-center pt-1">
           -90
@@ -194,10 +180,7 @@ const filteredIcons = computed(() => {
       </li>
       <li class="col mb-4">
         <div class="p-3 py-4 mb-2 bg-light text-center rounded">
-          <BootstrapIcon
-            icon="camera"
-            size="2x"
-            rotate="180" />
+          <BootstrapIcon icon="camera" size="2x" rotate="180" />
         </div>
         <div class="name text-muted text-decoration-none text-center pt-1">
           180
@@ -205,10 +188,7 @@ const filteredIcons = computed(() => {
       </li>
       <li class="col mb-4">
         <div class="p-3 py-4 mb-2 bg-light text-center rounded">
-          <BootstrapIcon
-            icon="camera"
-            size="2x"
-            rotate="270" />
+          <BootstrapIcon icon="camera" size="2x" rotate="270" />
         </div>
         <div class="name text-muted text-decoration-none text-center pt-1">
           270
@@ -219,13 +199,12 @@ const filteredIcons = computed(() => {
       <a name="animation" />
       <code>animation</code>
     </h3>
-    <ul class="row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 list-unstyled list">
+    <ul
+      class="row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 list-unstyled list"
+    >
       <li class="col mb-4">
         <div class="p-3 py-4 mb-2 bg-light text-center rounded">
-          <BootstrapIcon
-            icon="three-dots"
-            size="4x"
-            animation="cylon" />
+          <BootstrapIcon icon="three-dots" size="4x" animation="cylon" />
         </div>
         <div class="name text-muted text-decoration-none text-center pt-1">
           cylon
@@ -236,7 +215,8 @@ const filteredIcons = computed(() => {
           <BootstrapIcon
             icon="three-dots-vertical"
             size="4x"
-            animation="cylon-vertical" />
+            animation="cylon-vertical"
+          />
         </div>
         <div class="name text-muted text-decoration-none text-center pt-1">
           cylon-vertical
@@ -244,10 +224,7 @@ const filteredIcons = computed(() => {
       </li>
       <li class="col mb-4">
         <div class="p-3 py-4 mb-2 bg-light text-center rounded">
-          <BootstrapIcon
-            icon="star-fill"
-            size="4x"
-            animation="fade" />
+          <BootstrapIcon icon="star-fill" size="4x" animation="fade" />
         </div>
         <div class="name text-muted text-decoration-none text-center pt-1">
           fade
@@ -255,10 +232,7 @@ const filteredIcons = computed(() => {
       </li>
       <li class="col mb-4">
         <div class="p-3 py-4 mb-2 bg-light text-center rounded">
-          <BootstrapIcon
-            icon="arrow-clockwise"
-            size="4x"
-            animation="spin" />
+          <BootstrapIcon icon="arrow-clockwise" size="4x" animation="spin" />
         </div>
         <div class="name text-muted text-decoration-none text-center pt-1">
           spin
@@ -269,7 +243,8 @@ const filteredIcons = computed(() => {
           <BootstrapIcon
             icon="arrow-counterclockwise"
             size="4x"
-            animation="spin-reverse" />
+            animation="spin-reverse"
+          />
         </div>
         <div class="name text-muted text-decoration-none text-center pt-1">
           spin-reverse
@@ -280,7 +255,8 @@ const filteredIcons = computed(() => {
           <BootstrapIcon
             icon="arrow-clockwise"
             size="4x"
-            animation="spin-pulse" />
+            animation="spin-pulse"
+          />
         </div>
         <div class="name text-muted text-decoration-none text-center pt-1">
           spin-pulse
@@ -291,7 +267,8 @@ const filteredIcons = computed(() => {
           <BootstrapIcon
             icon="arrow-counterclockwise"
             size="4x"
-            animation="spin-reverse-pulse" />
+            animation="spin-reverse-pulse"
+          />
         </div>
         <div class="name text-muted text-decoration-none text-center pt-1">
           spin-reverse-pulse
@@ -299,10 +276,7 @@ const filteredIcons = computed(() => {
       </li>
       <li class="col mb-4">
         <div class="p-3 py-4 mb-2 bg-light text-center rounded">
-          <BootstrapIcon
-            icon="circle-fill"
-            size="4x"
-            animation="throb" />
+          <BootstrapIcon icon="circle-fill" size="4x" animation="throb" />
         </div>
         <div class="name text-muted text-decoration-none text-center pt-1">
           throb
