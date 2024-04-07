@@ -1,4 +1,4 @@
-name: test
+name: ci
 
 # Controls when the action will run.
 #   Triggers the workflow on all pushes, except on tag creation.
@@ -28,8 +28,31 @@ jobs:
     - name: Test ✅
       run: yarn coverage
 
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+    - name: Checkout 🛎️
+      uses: actions/checkout@v4
+
+    - name: Setup 🔧
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: yarn
+        registry-url: https://registry.npmjs.org
+
+    - name: Install 📦
+      run: yarn install --frozen-lockfile
+
     - name: Build ⚙️
       run: yarn build
+
+    - name: Publish 📜
+      if: github.ref == 'refs/heads/main' && github.event.type == 'release' && github.event.action == 'published'
+      run: yarn publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     - name: Pack 🎁
       run: yarn pack
