@@ -1,13 +1,18 @@
 name: ci
 
 # Controls when the action will run.
-#   Triggers the workflow on all pushes, except on tag creation.
+#   Triggers the workflow on:
+#   - all pushes, except on tag creation
+#   - new release publication
 on:
   push:
     branches:
     - '**'
     tags-ignore:
     - '**'
+  release:
+    types:
+    - published
 
 jobs:
   test:
